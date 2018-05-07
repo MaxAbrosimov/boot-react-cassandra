@@ -3,7 +3,6 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 import {connect} from 'react-redux'
 import * as actionCreators from 'actions/products'
-import { hashHistory } from 'react-router'
 
 
 import ProductForm from 'components/products/ProductForm'
@@ -15,8 +14,14 @@ class EditProductCmp extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        if(this.props.savedProduct && this.props.savedProduct !== prevProps.savedProduct){
-            hashHistory.push('/products')
+        if (prevProps.pid !== (this.props && this.props.pid)) {
+            this.props.fetchProduct(this.props.pid);
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.params && this.props.params.pid) {
+            this.props.fetchProduct(this.props.params.pid);
         }
     }
 
@@ -26,7 +31,11 @@ class EditProductCmp extends React.Component {
                 <div className="col-md-12">
                     <div className="panel panel-default">
                         <div className="panel-body">
-                            <ProductForm saveProduct = {this.props.saveProduct} />
+                            <ProductForm
+                                saveProduct = {this.props.saveProduct}
+                                changeProduct = {this.props.changeProduct}
+                                product = {this.props.currentProduct}
+                            />
                         </div>
                     </div>
                 </div>
@@ -34,12 +43,12 @@ class EditProductCmp extends React.Component {
         </div>
 
     }
-};
+}
 
 
 function mapStateToProps(state) {
     return {
-        savedProduct: state.product.get('saved')
+        currentProduct: state.product.get('currentProduct')
     }
 }
 

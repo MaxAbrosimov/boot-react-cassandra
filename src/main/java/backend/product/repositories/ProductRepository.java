@@ -1,4 +1,4 @@
-package backend.repositories;
+package backend.product.repositories;
 
 import backend.domain.Product;
 import org.springframework.data.repository.CrudRepository;

@@ -1,12 +1,14 @@
-package backend;
+package backend.product;
 
 import backend.domain.Product;
-import backend.services.ProductService;
+import backend.product.dto.ProductDto;
+import backend.product.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -20,15 +22,20 @@ public class ProductController {
 
     @PostMapping(value = "/products/save", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(OK)
-    public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
-
-        return new ResponseEntity<>(productService.saveOrUpdate(product), OK);
+    public ResponseEntity<ProductDto> saveProduct(@RequestBody ProductDto productDto) {
+        return new ResponseEntity<>(productService.saveOrUpdate(productDto), OK);
     }
 
     @GetMapping(value = "/products/all", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(OK)
-    public ResponseEntity<List<Product>> list() {
+    public ResponseEntity<List<ProductDto>> list() {
         return new ResponseEntity<>(productService.listAll(), OK);
+    }
+
+    @GetMapping(value = "/products/{pid}", produces = APPLICATION_JSON_VALUE)
+    @ResponseStatus(OK)
+    public ResponseEntity<Product> list(@PathVariable String pid) {
+        return new ResponseEntity<>(productService.getById(UUID.fromString(pid)), OK);
     }
 
 }

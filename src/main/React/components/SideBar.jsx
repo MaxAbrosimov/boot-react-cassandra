@@ -25,7 +25,7 @@ export default class SideBar extends React.Component {
                     <li>
                         <Link to="/products">
                             <i className="pe-7s-ribbon"></i>
-                            Produits
+                            Products
                         </Link>
                     </li>
 

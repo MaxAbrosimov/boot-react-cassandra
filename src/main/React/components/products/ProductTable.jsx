@@ -1,5 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import { Link } from 'react-router'
 
 export default class ProductTable extends React.Component {
     constructor(props) {
@@ -16,7 +17,11 @@ export default class ProductTable extends React.Component {
             </thead>
             <tbody>
             {this.props.products.map(product => <tr key={product.get('name')}>
-                <td>{product.get('name')}</td>
+                <td>
+                    <Link to={`/products/${product.get('id')}`}>
+                        {product.get('name')}
+                    </Link>
+                </td>
             </tr>)}
 
             </tbody>

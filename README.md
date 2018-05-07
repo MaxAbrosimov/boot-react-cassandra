@@ -1,4 +1,4 @@
-# Spring boot + React and Redux example 
+# Spring boot + CassandraDB + React and Redux example 
 
 ### Install
 

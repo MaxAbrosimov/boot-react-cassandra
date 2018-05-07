@@ -11,5 +11,6 @@ export default (
         <IndexRoute component={SomePage}/>
         <Route path="products" component={ProductsList}/>
         <Route path="products/new" component={EditProduct}/>
+        <Route path="products/:pid" component={EditProduct}/>
     </Route>
 )

@@ -1,5 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import {TextField} from 'material-ui'
 
 export default class ProductForm extends React.Component {
     constructor(props) {
@@ -9,15 +10,19 @@ export default class ProductForm extends React.Component {
 
     onSubmit(e){
         e.preventDefault()
-        this.props.saveProduct({name: this.refs.name.value})
+        this.props.saveProduct(this.props.product)
+    }
+
+    onChange(name){
+        this.props.changeProduct({name: name})
     }
 
     render() {
-
+        const {product} = this.props;
         return <form onSubmit={this.onSubmit.bind(this)}>
             <div className="form-group">
-                <label>Product name</label>
-                <input className="form-control" ref="name" />
+                <label style={{paddingRight: 10}}>Product name</label>
+                <TextField id="name" value={product ? product.get('name') : ''} onChange={(e, val) => this.onChange(val)} />
             </div>
             <button type="submit" className="btn btn-fill btn-primary">Save</button>
         </form>
