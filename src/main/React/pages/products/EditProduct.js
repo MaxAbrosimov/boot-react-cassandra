@@ -14,15 +14,15 @@ class EditProductCmp extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        if (prevProps.pid !== (this.props && this.props.pid)) {
-            this.props.fetchProduct(this.props.pid);
+        const prevPid = prevProps.params && prevProps.params.pid;
+        const nextPid = this.props.params && this.props.params.pid;
+        if (prevPid !== nextPid) {
+            this.props.fetchProduct(nextPid);
         }
     }
 
     componentDidMount() {
-        if (this.props.params && this.props.params.pid) {
-            this.props.fetchProduct(this.props.params.pid);
-        }
+        this.props.fetchProduct(this.props.params && this.props.params.pid);
     }
 
     render() {

@@ -1,8 +1,12 @@
-import { PRODUCTS_SAVED, PRODUCTS_ALL, PRODUCT_LOADED } from 'actions/actionTypes'
-import {CHANGE_PRODUCT} from "../actions/actionTypes";
+import { PRODUCTS_SAVED, PRODUCTS_ALL, PRODUCT_LOADED, FETCH_PRODUCT, CHANGE_PRODUCT } from '../actions/actionTypes'
 
-export default function productReducer(state = {}, action) {
+const initialState = {};
+
+export default function productReducer(state = initialState, action) {
     switch(action.type) {
+
+        case FETCH_PRODUCT:
+            return initialState;
 
         case PRODUCTS_SAVED:
             return {
