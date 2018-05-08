@@ -25,7 +25,7 @@ class ProductsListCmp extends React.Component {
     }
 
     render() {
-        return <ProductTable products = {this.getProducts()}/>;
+        return <ProductTable products = {this.getProducts()} deleteProduct={this.props.deleteProduct}/>;
     }
 }
 

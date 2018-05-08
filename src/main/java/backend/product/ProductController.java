@@ -34,8 +34,15 @@ public class ProductController {
 
     @GetMapping(value = "/products/{pid}", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(OK)
-    public ResponseEntity<Product> list(@PathVariable String pid) {
+    public ResponseEntity<Product> load(@PathVariable String pid) {
         return new ResponseEntity<>(productService.getById(UUID.fromString(pid)), OK);
+    }
+
+    @DeleteMapping(value = "/products/{pid}", produces = APPLICATION_JSON_VALUE)
+    @ResponseStatus(OK)
+    public ResponseEntity delete(@PathVariable String pid) {
+        productService.delete(UUID.fromString(pid));
+        return new ResponseEntity(OK);
     }
 
 }

@@ -1,4 +1,4 @@
-import {post, get} from 'axios';
+import {post, get, delete as deleteMapping} from 'axios';
 import { hashHistory } from 'react-router'
 import { PRODUCTS_SAVED, FETCH_PRODUCT, AJAX_END, PRODUCTS_ALL, PRODUCT_LOADED, CHANGE_PRODUCT } from './actionTypes';
 
@@ -17,6 +17,14 @@ export function saveProduct(productToSave) {
             .catch(function(response){
                 dispatch({ type: AJAX_END })
             })
+    }
+}
+
+export function deleteProduct(pid) {
+    return function(dispatch){
+        dispatch({ type: FETCH_PRODUCT })
+        return deleteMapping(`/api/products/${pid}`).then(() => dispatch(loadAllProducts()));
+
     }
 }
 
