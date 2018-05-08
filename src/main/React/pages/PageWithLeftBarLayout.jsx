@@ -1,23 +1,18 @@
 import React from 'react'
 
-import {connect} from 'react-redux'
-
-import { browserHistory, Link } from 'react-router'
-import {NavBar} from 'components/NavBar'
-import SideBar from 'components/SideBar'
+import Drawer from 'components/Drawer'
 import Footer from 'components/Footer'
 
 
 export class PageWithLeftBarLayout extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {
         return <div className="wrapper">
-            <SideBar />
+            <Drawer/>
             <div className="main-panel">
-                <NavBar />
                 <div className="content">
                     {this.props.children}
                 </div>
