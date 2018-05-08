@@ -22,10 +22,10 @@ var common = {
             loaders: [{
                 test: /\.js/,
                 exclude: /node_modules/,
-                loader: "babel",
+                loader: "babel-loader",
                 include: __dirname,
                 query: {
-                    presets: ["es2015", "react"]
+                    presets: ["es2016", "react"]
                 }
             }]
         }
