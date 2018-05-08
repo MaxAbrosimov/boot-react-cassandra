@@ -23,7 +23,7 @@ export default class Footer extends React.Component {
                     </ul>
                 </nav>
                 <p className="copyright pull-right">
-                    Exemple React + spring boot, par MBL
+                    Example React + spring boot + cassandra
                 </p>
             </div>
         </footer>
