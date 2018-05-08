@@ -48,7 +48,7 @@ class EditProductCmp extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        currentProduct: state.product.get('currentProduct')
+        currentProduct: state.product.currentProduct
     }
 }
 

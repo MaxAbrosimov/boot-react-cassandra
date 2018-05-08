@@ -44,8 +44,8 @@ class ProductsListCmp extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        needRefresh: state.product.get('needRefresh'),
-        products: state.product.get('products')
+        needRefresh: state.product.needRefresh,
+        products: state.product.products
     }
 }
 

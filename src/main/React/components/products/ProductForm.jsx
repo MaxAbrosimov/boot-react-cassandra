@@ -22,7 +22,7 @@ export default class ProductForm extends React.Component {
         return <form onSubmit={this.onSubmit.bind(this)}>
             <div className="form-group">
                 <label style={{paddingRight: 10}}>Product name</label>
-                <TextField id="name" value={product ? product.get('name') : ''} onChange={(e, val) => this.onChange(val)} />
+                <TextField id="name" value={product ? product.name : ''} onChange={(e, val) => this.onChange(val)} />
             </div>
             <button type="submit" className="btn btn-fill btn-primary">Save</button>
         </form>

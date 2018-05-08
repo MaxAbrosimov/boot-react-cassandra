@@ -16,10 +16,10 @@ export default class ProductTable extends React.Component {
             </tr>
             </thead>
             <tbody>
-            {this.props.products.map(product => <tr key={product.get('name')}>
+            {this.props.products.map(product => <tr key={product.id}>
                 <td>
-                    <Link to={`/products/${product.get('id')}`}>
-                        {product.get('name')}
+                    <Link to={`/products/${product.id}`}>
+                        {product.name}
                     </Link>
                 </td>
             </tr>)}

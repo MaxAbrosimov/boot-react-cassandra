@@ -1,7 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import {expect} from 'chai';
-import {List, Map} from 'immutable';
+import {List} from 'immutable';
 
 import ProductTable from '../../../main/React/components/products/ProductTable'
 
@@ -14,8 +14,8 @@ describe('ProductTable', () => {
     it('Renders list of elements', () => {
         // given
         const products = List.of(
-            Map({id: 1, name: 'product1'}),
-            Map({id: 2, name: 'product2'})
+            {id: 1, name: 'product1'},
+            {id: 2, name: 'product2'}
         );
 
 
