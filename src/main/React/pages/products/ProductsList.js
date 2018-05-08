@@ -25,21 +25,9 @@ class ProductsListCmp extends React.Component {
     }
 
     render() {
-        return <div className="container-fluid">
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="panel panel-default">
-                        <div className="panel-body">
-                            <ProductTable products = {this.getProducts()}/>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        return <ProductTable products = {this.getProducts()}/>;
     }
-};
+}
 
 
 function mapStateToProps(state) {
