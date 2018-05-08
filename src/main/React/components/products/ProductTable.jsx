@@ -3,11 +3,13 @@ import { Link } from 'react-router'
 import Table from '../common/Table';
 
 
-export default ProductTable = ({products, deleteProduct}) => (
+const ProductTable = ({products, deleteProduct}) => (
     <Table
         headers={['Product id', 'Product name']}
-        deleteFunction={deleteProduct}
-        rows={products.map(product => [
+        deleteAction={deleteProduct}
+        rows={products.map(product => ({
+            id: product.id,
+            columns: [
                 <Link to={`/products/${product.id}`}>
                     {product.id}
                 </Link>,
@@ -15,6 +17,7 @@ export default ProductTable = ({products, deleteProduct}) => (
                     {product.name}
                 </Link>
             ]
-        )}
+        }))}
     />
 );
+export default ProductTable;

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router'
 import RemoveIcon from 'material-ui/svg-icons/navigation/cancel'
+import ButtonWithDialog from './ButtonWithDialog'
 import {
     Table,
     TableBody,
@@ -10,8 +10,15 @@ import {
     TableRowColumn,
 } from 'material-ui/Table';
 
+const styles = {
+    deleteButton: {
+        width: 75,
+        paddingTop: 10,
+        cursor: 'pointer'
+    }
+};
 
-const ProductTable = ({headers, rows, deleteFunction}) => (
+const TableComp = ({headers, rows, deleteAction}) => (
     <Table  style={{width: 800}}>
         <TableHeader
             displaySelectAll={false}
@@ -19,7 +26,7 @@ const ProductTable = ({headers, rows, deleteFunction}) => (
         >
             <TableRow>
                 {headers.map(header => <TableHeaderColumn key={header}>{header}</TableHeaderColumn>)}
-                {deleteFunction && <TableHeaderColumn style={{width: 20}}/>}
+                {deleteAction && <TableHeaderColumn style={{width: 20}}/>}
             </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={false} stripedRows={true}>
@@ -27,15 +34,17 @@ const ProductTable = ({headers, rows, deleteFunction}) => (
                 rows && rows.map((row, i) =>
                     <TableRow key={i}>
                         {
-                            row.map(column =>
+                            row.columns.map(column =>
                                 <TableRowColumn>
                                     {column}
                                 </TableRowColumn>
                             )
                         }
-                        {deleteFunction &&
-                            <TableRowColumn style={{width: 75, paddingTop: 10}}>
-                                {<RemoveIcon onClick={() => deleteFunction(p.id)}/>}
+                        {deleteAction &&
+                            <TableRowColumn style={styles.deleteButton}>
+                                <ButtonWithDialog deleteAction={() => deleteAction(row.id)}>
+                                    <RemoveIcon />
+                                </ButtonWithDialog>
                             </TableRowColumn>
                         }
                     </TableRow>
@@ -45,4 +54,4 @@ const ProductTable = ({headers, rows, deleteFunction}) => (
     </Table>
 );
 
-export default ProductTable;
+export default TableComp;
